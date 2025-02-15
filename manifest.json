@@ -1,0 +1,30 @@
+{
+    "manifest_version": 3,
+    "name": "My Ad Blocker",
+    "version": "1.0",
+    "description": "A simple ad blocker/tackler for YouTube and other sites.",
+    "permissions": ["declarativeNetRequest", "storage", "activeTab"],
+    "host_permissions": ["<all_urls>"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["*://*/*"],
+        "js": ["content.js"]
+      }
+    ],
+    "icons": {
+      "128": "icon.png"
+    },
+    "declarative_net_request": {
+      "rule_resources": [
+        {
+          "id": "block-ads",
+          "enabled": true,
+          "path": "rules.json"
+        }
+      ]
+    }
+  }
+  
